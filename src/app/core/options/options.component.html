@@ -1,0 +1,115 @@
+<div class="container">
+    <h1>Suas preferências:</h1>
+
+    <div class="dx-fieldset">
+        <div class="dx-field">
+            <div class="dx-field-label">TOP:</div>
+            <div class="dx-field-value">
+                <dx-tag-box
+                [(value)]="options.top"
+                placeholder="Escolha seus campeões!"
+                [searchEnabled]="true"
+                [dataSource]="opcoesCampeoes"
+                itemTemplate="templateCampeoes"
+                >
+                <div *dxTemplate="let campeoes of 'templateCampeoes'">
+                    <!-- <img [src]="campeoes.ImageSrc" /> -->
+                    <div class="product-name">
+                        {{ campeoes }}
+                    </div>
+                </div>
+                </dx-tag-box>
+            </div>
+        </div>
+
+        <div class="dx-field">
+            <div class="dx-field-label">MID:</div>
+            <div class="dx-field-value">
+                <dx-tag-box
+                [(value)]="options.mid"
+                placeholder="Escolha seus campeões!"
+                [searchEnabled]="true"
+                [dataSource]="opcoesCampeoes"
+                itemTemplate="templateCampeoes"
+                >
+                <div *dxTemplate="let campeoes of 'templateCampeoes'">
+                    <!-- <img [src]="campeoes.ImageSrc" /> -->
+                    <div class="product-name">
+                        {{ campeoes }}
+                    </div>
+                </div>
+                </dx-tag-box>
+            </div>
+        </div>
+
+        <div class="dx-field">
+            <div class="dx-field-label">ADC:</div>
+            <div class="dx-field-value">
+                <dx-tag-box
+                [(value)]="options.adc"
+                placeholder="Escolha seus campeões!"
+                [searchEnabled]="true"
+                [dataSource]="opcoesCampeoes"
+                itemTemplate="templateCampeoes"
+                >
+                <div *dxTemplate="let campeoes of 'templateCampeoes'">
+                    <!-- <img [src]="campeoes.ImageSrc" /> -->
+                    <div class="product-name">
+                        {{ campeoes }}
+                    </div>
+                </div>
+                </dx-tag-box>
+            </div>
+        </div>
+
+        <div class="dx-field">
+            <div class="dx-field-label">SUP:</div>
+            <div class="dx-field-value">
+                <dx-tag-box
+                [(value)]="options.sup"
+                placeholder="Escolha seus campeões!"
+                [searchEnabled]="true"
+                [dataSource]="opcoesCampeoes"
+                itemTemplate="templateCampeoes"
+                >
+                <div *dxTemplate="let campeoes of 'templateCampeoes'">
+                    <!-- <img [src]="campeoes.ImageSrc" /> -->
+                    <div class="product-name">
+                        {{ campeoes }}
+                    </div>
+                </div>
+                </dx-tag-box>
+            </div>
+        </div>
+
+        <div class="dx-field">
+            <div class="dx-field-label">JUNGLER:</div>
+            <div class="dx-field-value">
+                <dx-tag-box
+                [(value)]="options.jg"
+                placeholder="Escolha seus campeões!"
+                [searchEnabled]="true"
+                [dataSource]="opcoesCampeoes"
+                itemTemplate="templateCampeoes"
+                >
+                <div *dxTemplate="let campeoes of 'templateCampeoes'">
+                    <!-- <img [src]="campeoes.ImageSrc" /> -->
+                    <div class="product-name">
+                        {{ campeoes }}
+                    </div>
+                </div>
+                </dx-tag-box>
+            </div>
+        </div>
+
+        <div class="dx-field">
+            <div class="dx-field-label"></div>
+            <div class="dx-field-value">
+                <dx-button
+                    (onClick)="atualizarOptions($event)"
+                    text="Atualizar Preferências">
+                </dx-button>
+            </div>
+        </div>
+    </div>    
+</div>

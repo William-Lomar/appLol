@@ -1,0 +1,23 @@
+<div class="login">
+    <div class="long-title">
+        <h3>Faça login em sua conta</h3>
+    </div>
+    <form method="post" (submit)="logar($event)">
+        <dx-form [formData]="dadosUser">
+            <dxi-item
+                dataField="nome"
+            ></dxi-item>
+            <dxi-item
+                [editorOptions]="{ mode: 'password' }"
+                dataField="senha"
+            >
+            </dxi-item>
+            <dxi-item
+                itemType="button"
+                horizontalAlignment="center"
+                [buttonOptions]="buttonOptions"
+            >
+            </dxi-item>
+        </dx-form>
+    </form>
+</div>

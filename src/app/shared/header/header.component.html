@@ -1,1 +1,8 @@
-<h2>Meu header</h2>
+<div id="container">
+    <dx-menu (onItemClick)="mudarRota($event)">
+        <dxi-item icon="home"></dxi-item>
+        <dxi-item text="Preferências"></dxi-item> <!-- Criar condicional logado -->
+        <dxi-item text="Rotação semanal"></dxi-item>
+        <dxi-item text="Login"></dxi-item>
+    </dx-menu>
+</div>

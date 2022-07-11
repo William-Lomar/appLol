@@ -1,0 +1,100 @@
+<div class="container">
+  <h1>Me informe suas preferências para encontrarmos o melhor matchup!!</h1>
+  <div class="dx-fieldset">
+    <div class="dx-field">
+      <div class="dx-field-label">Quem será seu oponente?</div>
+      <div class="dx-field-value">
+        <dx-select-box
+          dropDownButtonTemplate="" 
+          [dataSource]="opcoesCampeoes"
+          [(value)]="oponente"
+          fieldTemplate="templateOponente"
+          >
+        <div *dxTemplate="let campeao of 'templateOponente'">
+            <!-- <img src="{{ campeao.ImageSrc }}" /> -->
+            <dx-text-box
+              placeholder="Escolha seu oponente!"
+              [value]="campeao"
+              [readOnly]="true"
+            ></dx-text-box>
+        </div>
+        </dx-select-box>
+      </div>
+    </div>
+    
+    <div class="dx-field">
+      <div class="dx-field-label">Seus Campeões</div>
+      <div class="dx-field-value">
+        <dx-tag-box
+          [(value)]="campeoesEscolhidos"
+          placeholder="Escolha seus campeões!"
+          [searchEnabled]="true"
+          [dataSource]="opcoesCampeoes"
+          itemTemplate="templateCampeoes"
+        >
+          <div *dxTemplate="let campeoes of 'templateCampeoes'">
+              <!-- <img [src]="campeoes.ImageSrc" /> -->
+              <div class="product-name">
+                {{ campeoes }}
+              </div>
+          </div>
+        </dx-tag-box>
+      </div>
+    </div>
+
+      <div class="dx-field">
+        <div class="dx-field-label">Qual será a rota?</div>
+        <div class="dx-field-value">
+          <dx-select-box
+            dropDownButtonTemplate="" 
+            [items]="rotas"
+            [(value)]="rotaSelecionanda"
+            fieldTemplate="rotaTemplate"
+            >
+          <div *dxTemplate="let rota of 'rotaTemplate'">
+            <!-- <img src="{{ campeao.ImageSrc }}" /> -->
+            <dx-text-box
+              placeholder="Escolha sua rota!"
+              [value]="rota"
+              [readOnly]="true"
+            ></dx-text-box>
+          </div>
+          
+          </dx-select-box>
+        </div>
+      </div>
+
+
+      <div class="dx-field">
+        <div class="dx-field-label">Qual o seu elo?</div>
+        <div class="dx-field-value">
+          <dx-select-box
+            dropDownButtonTemplate="" 
+            [items]="elos"
+            [(value)]="eloSelecionado"
+            fieldTemplate="eloTemplate"
+            >
+          <div *dxTemplate="let elo of 'eloTemplate'">
+            <!-- <img src="{{ campeao.ImageSrc }}" /> -->
+            <dx-text-box
+              placeholder="Escolha seu elo!"
+              [value]="elo"
+              [readOnly]="true"
+            ></dx-text-box>
+          </div>
+          
+          </dx-select-box>
+        </div>
+      </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label"></div>
+          <div class="dx-field-value">
+            <dx-button
+                (onClick)="encontrarMatchup($event)"
+                text="Encontrar Matchup!!">
+            </dx-button>
+          </div>
+        </div>
+  </div>
+</div>

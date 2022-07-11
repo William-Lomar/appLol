@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { MenuService } from "src/app/services/menu.service";
 
 
 @Component({
@@ -7,4 +9,21 @@ import { Component } from "@angular/core";
 })
 export class HeaderComponent{
 
+    constructor(
+        private menuService:MenuService
+    ){}
+
+    mudarRota(event:any){
+        let rota = '';
+        //Criar função para seleção de rotas
+        if(Object.keys(event.itemData)[0] == 'icon'){
+            rota = 'home'
+        }else{
+            rota = event.itemData.text;
+        }
+
+        console.log('Clicou em: '+rota);
+
+        this.menuService.rotasMenu(rota);
+    }
 }

@@ -1,0 +1,22 @@
+
+<form (submit)='encontrarMatchup($event)'>
+  <dx-form [formData]="matchup">
+    <dxi-item dataField="oponente"
+    editorType="dxTagBox"
+    [editorOptions]="{ items: rotas, searchEnabled: true}"
+    ></dxi-item>
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="left"
+      [buttonOptions]="submitButtonOptions"
+    >
+    </dxi-item>
+  </dx-form>
+</form>
+
+<!-- 
+<dx-tag-box
+placeholder="Escolha a rota!"
+[searchEnabled]="true"
+[dataSource]="rotas"
+></dx-tag-box> -->
