@@ -1,3 +1,20 @@
-<h1>
-    Estou na pagina de resultados
-</h1>
+<div class="container">
+    <h1>Seus Matchups</h1>
+    <div *ngIf="loading; else results_content">
+      <h1>Loading...</h1>
+    </div>
+    <ng-template #results_content>
+      <div *ngFor="let matchup of resultados" class="box vitoria">
+        <dx-box direction="col" width="100%" [height]="150">
+            <dxi-item class="rect top" [ratio]="1"> {{matchup.campeao}} X {{matchup.oponente}} </dxi-item>
+            <dxi-item [ratio]="2" [baseSize]="0">
+              <dx-box direction="row" width="100%" [height]="100">
+                <dxi-item class="itens" [ratio]="1"> Ver em League of Graphs </dxi-item>
+                <dxi-item class="itens" [ratio]="1"> {{matchup.percent}} </dxi-item>
+                <dxi-item class="itens" [ratio]="1"> Ver em Lolalytics </dxi-item>
+              </dx-box>
+            </dxi-item>
+        </dx-box>
+    </div>
+    </ng-template>
+</div>

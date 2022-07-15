@@ -1,4 +1,9 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { CampeoesInterface } from "src/app/interfaces/campeoes.interface";
+import { EloInterface } from "src/app/interfaces/elo.interface";
+import { MatchupInterface } from "src/app/interfaces/matchup.interface";
+import { RotaInterface } from "src/app/interfaces/rota.interface";
 import { LolService } from "src/app/services/lol.service";
 
 
@@ -8,29 +13,26 @@ import { LolService } from "src/app/services/lol.service";
 })
 export class HomeComponent{
     constructor(
-        private lolService:LolService
+        private lolService:LolService,
+        private router:Router
     ){}
 
-    dataSource!:any;
-    rotaSelecionanda!: any;
-    campeoesEscolhidos !: any;
-    oponente !: any;
-    eloSelecionado !: any;
-
-    matchup = {
-        campeoes: '',
+    matchup:MatchupInterface = {
+        campeoes: [],
         oponente: '',
         rota: '',
         elo:''
     }
 
-    opcoesCampeoes = ['irelia','veigar','mundo'];
+    opcoesCampeoes: Array<CampeoesInterface> = this.lolService.getCampeoes();
 
-    rotas = ['TOP','MID','ADC','SUP','JUNGLER'];
+    rotas:Array<RotaInterface> = this.lolService.getRotas();
 
-    elos = ['Ferro','Bronze','Prata','Ouro'];
+    elos:Array<EloInterface> = this.lolService.getElos();
 
     encontrarMatchup(e:any){
-        console.log("Enviando form!");
+        this.lolService.atualizarMatchup(this.matchup);
+        this.router.navigate(['/results']);
     }
+
 }

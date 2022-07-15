@@ -1,6 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxButtonModule, DxFormModule, DxListModule, DxMenuModule, DxSelectBoxModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxBoxModule, DxButtonModule, DxFormModule, DxListModule, DxMenuModule, DxSelectBoxModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule } from 'devextreme-angular';
 import { DxiFieldModule } from 'devextreme-angular/ui/nested';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +39,9 @@ import { HeaderComponent } from './shared/header/header.component';
     DxTextAreaModule,
     DxSelectBoxModule,
     DxButtonModule,
-    DxListModule
+    DxListModule,
+    DxBoxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

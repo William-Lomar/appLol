@@ -5,18 +5,24 @@
       <div class="dx-field-label">Quem será seu oponente?</div>
       <div class="dx-field-value">
         <dx-select-box
-          dropDownButtonTemplate="" 
+        placeholder="Escolha seu oponente"
+        [searchEnabled]="true"
+        searchExpr="nome"
+        displayExpr="nome"
           [dataSource]="opcoesCampeoes"
-          [(value)]="oponente"
-          fieldTemplate="templateOponente"
+          valueExpr="nome"
+          [(value)]="matchup.oponente"
           >
-        <div *dxTemplate="let campeao of 'templateOponente'">
-            <!-- <img src="{{ campeao.ImageSrc }}" /> -->
-            <dx-text-box
-              placeholder="Escolha seu oponente!"
-              [value]="campeao"
-              [readOnly]="true"
-            ></dx-text-box>
+
+        <div *dxTemplate="let campeao of 'dropDownButton'">
+          <img *ngIf="false" [src]="campeao.img" > 
+        </div>
+
+        <div *dxTemplate="let campeao of 'item'"> <!-- Aqui é o template da pesquisa-->
+          <img>
+          <div>
+            {{campeao.nome}}
+          </div>
         </div>
         </dx-select-box>
       </div>
@@ -26,16 +32,18 @@
       <div class="dx-field-label">Seus Campeões</div>
       <div class="dx-field-value">
         <dx-tag-box
-          [(value)]="campeoesEscolhidos"
+          [(value)]="matchup.campeoes"
           placeholder="Escolha seus campeões!"
           [searchEnabled]="true"
+          displayExpr="nome"
+          valueExpr="nome"
           [dataSource]="opcoesCampeoes"
           itemTemplate="templateCampeoes"
         >
           <div *dxTemplate="let campeoes of 'templateCampeoes'">
-              <!-- <img [src]="campeoes.ImageSrc" /> -->
+              <!-- <img [src]="campeoes.img" /> -->
               <div class="product-name">
-                {{ campeoes }}
+                {{ campeoes.nome }} 
               </div>
           </div>
         </dx-tag-box>
@@ -46,41 +54,39 @@
         <div class="dx-field-label">Qual será a rota?</div>
         <div class="dx-field-value">
           <dx-select-box
-            dropDownButtonTemplate="" 
+          placeholder="Escolha sua rota!"
+          [searchEnabled]="true"
             [items]="rotas"
-            [(value)]="rotaSelecionanda"
-            fieldTemplate="rotaTemplate"
+            displayExpr="rota"
+            valueExpr="rota"
+            [(value)]="matchup.rota"
             >
-          <div *dxTemplate="let rota of 'rotaTemplate'">
-            <!-- <img src="{{ campeao.ImageSrc }}" /> -->
-            <dx-text-box
-              placeholder="Escolha sua rota!"
-              [value]="rota"
-              [readOnly]="true"
-            ></dx-text-box>
+          <div *dxTemplate="let rota of 'dropDownButton'">
+            <img *ngIf="false" src="{{ rota.img }}" /> 
           </div>
-          
+          <div *dxTemplate="let rota of 'item'">
+            {{rota.rota}}
+          </div>
           </dx-select-box>
         </div>
       </div>
-
 
       <div class="dx-field">
         <div class="dx-field-label">Qual o seu elo?</div>
         <div class="dx-field-value">
           <dx-select-box
-            dropDownButtonTemplate="" 
+          [searchEnabled]="true"
+          placeholder="Escolha seu elo!"
             [items]="elos"
-            [(value)]="eloSelecionado"
-            fieldTemplate="eloTemplate"
+            displayExpr="elo"
+            valueExpr="elo"
+            [(value)]="matchup.elo"
             >
-          <div *dxTemplate="let elo of 'eloTemplate'">
-            <!-- <img src="{{ campeao.ImageSrc }}" /> -->
-            <dx-text-box
-              placeholder="Escolha seu elo!"
-              [value]="elo"
-              [readOnly]="true"
-            ></dx-text-box>
+          <div *dxTemplate="let elo of 'dropDownButton'">
+            <img *ngIf="false" src="{{ elo.img }}" />
+          </div>
+          <div *dxTemplate="let elo of 'item'">
+            {{elo.elo}}
           </div>
           
           </dx-select-box>

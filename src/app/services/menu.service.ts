@@ -9,10 +9,6 @@ export class MenuService{
         private router:Router
     ){}
 
-    mostrarMenu(){
-        
-    }
-
     rotasMenu(key:string){
         switch (key) {
             case 'Login':
