@@ -16,7 +16,6 @@ export class ResultsComponent implements OnInit{
     ){}
 
     ngOnInit(): void {
-        
         //Solicitar dados de resultado
        this.lolService.realizarMatchups().subscribe({
             next:(results)=>{

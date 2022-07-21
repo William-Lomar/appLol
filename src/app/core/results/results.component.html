@@ -4,14 +4,20 @@
       <h1>Loading...</h1>
     </div>
     <ng-template #results_content>
-      <div *ngFor="let matchup of resultados" class="box vitoria">
-        <dx-box direction="col" width="100%" [height]="150">
-            <dxi-item class="rect top" [ratio]="1"> {{matchup.campeao}} X {{matchup.oponente}} </dxi-item>
+      <div *ngFor="let matchup of resultados" class="box">
+        <dx-box [ngClass]="{'vitoria':matchup.percent >= 50,'derrota':matchup.percent < 50}" direction="col" width="100%" [height]="200">
+            <dxi-item class="rect top" [ratio]="1"> {{matchup.campeao | titlecase}} X {{matchup.oponente | titlecase}} </dxi-item>
             <dxi-item [ratio]="2" [baseSize]="0">
               <dx-box direction="row" width="100%" [height]="100">
-                <dxi-item class="itens" [ratio]="1"> Ver em League of Graphs </dxi-item>
-                <dxi-item class="itens" [ratio]="1"> {{matchup.percent}} </dxi-item>
-                <dxi-item class="itens" [ratio]="1"> Ver em Lolalytics </dxi-item>
+                <dxi-item class="itens" [ratio]="1">
+                  <img [src]="matchup.campeaoImg">
+                  <a [href]="matchup.linkLeagueOfGraphs">Ver em League of Graphs</a> 
+                </dxi-item>
+                <dxi-item class="itens" [ratio]="1"> {{matchup.percent}}% </dxi-item>
+                <dxi-item class="itens" [ratio]="1">
+                  <img [src]="matchup.oponenteImg">
+                  <a [href]="matchup.linkLolalytics">Ver em Lolalytics</a> 
+                </dxi-item>
               </dx-box>
             </dxi-item>
         </dx-box>

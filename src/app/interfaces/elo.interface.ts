@@ -1,4 +1,5 @@
 export interface EloInterface{
     elo:string;
-    img:string
+    img:string;
+    nome:string;
 }

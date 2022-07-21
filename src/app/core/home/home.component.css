@@ -1,0 +1,22 @@
+.clear{
+    clear: both;
+}
+
+.itensSelect div{
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.itensSelect div p{
+    margin:5px;
+}
+
+.itensSelect img{
+    width: 30px;
+    float: right;
+}
+
+img{
+    width: 30px;
+}

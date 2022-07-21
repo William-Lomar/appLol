@@ -33,3 +33,8 @@
 .derrota{
     background-color: rgb(252, 157, 157);
 }
+
+img{
+    margin:15px auto;
+    width: 50px;
+}

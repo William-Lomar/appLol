@@ -10,7 +10,6 @@
         searchExpr="nome"
         displayExpr="nome"
           [dataSource]="opcoesCampeoes"
-          valueExpr="nome"
           [(value)]="matchup.oponente"
           >
 
@@ -19,9 +18,11 @@
         </div>
 
         <div *dxTemplate="let campeao of 'item'"> <!-- Aqui é o template da pesquisa-->
-          <img>
-          <div>
-            {{campeao.nome}}
+          <div class="itensSelect">
+            <div>
+             <p>{{campeao.nome}}</p> 
+            </div>
+            <img [src]="campeao.img" >
           </div>
         </div>
         </dx-select-box>
@@ -36,15 +37,19 @@
           placeholder="Escolha seus campeões!"
           [searchEnabled]="true"
           displayExpr="nome"
-          valueExpr="nome"
           [dataSource]="opcoesCampeoes"
           itemTemplate="templateCampeoes"
         >
           <div *dxTemplate="let campeoes of 'templateCampeoes'">
-              <!-- <img [src]="campeoes.img" /> -->
+            <div class="itensSelect">
               <div class="product-name">
-                {{ campeoes.nome }} 
+                <p>
+                  {{ campeoes.nome}} 
+                </p>
               </div>
+              <img [src]="campeoes.img" />
+            </div>
+              
           </div>
         </dx-tag-box>
       </div>
@@ -54,18 +59,26 @@
         <div class="dx-field-label">Qual será a rota?</div>
         <div class="dx-field-value">
           <dx-select-box
+          (onValueChanged)="atualizarImgRota()"
           placeholder="Escolha sua rota!"
           [searchEnabled]="true"
             [items]="rotas"
-            displayExpr="rota"
+            displayExpr="nome"
             valueExpr="rota"
             [(value)]="matchup.rota"
             >
           <div *dxTemplate="let rota of 'dropDownButton'">
-            <img *ngIf="false" src="{{ rota.img }}" /> 
+              <img [src]="rotaImg"/>  
           </div>
           <div *dxTemplate="let rota of 'item'">
-            {{rota.rota}}
+            <div class="itensSelect">
+              <div class="product-name">
+                <p>
+                  {{ rota.nome}} 
+                </p>
+              </div>
+              <img [src]="rota.img"/>
+            </div>
           </div>
           </dx-select-box>
         </div>
@@ -75,18 +88,26 @@
         <div class="dx-field-label">Qual o seu elo?</div>
         <div class="dx-field-value">
           <dx-select-box
+          (onValueChanged)="atualizarImgElo()"
           [searchEnabled]="true"
           placeholder="Escolha seu elo!"
             [items]="elos"
-            displayExpr="elo"
+            displayExpr="nome"
             valueExpr="elo"
             [(value)]="matchup.elo"
             >
           <div *dxTemplate="let elo of 'dropDownButton'">
-            <img *ngIf="false" src="{{ elo.img }}" />
+            <img [src]="eloImg"/>
           </div>
           <div *dxTemplate="let elo of 'item'">
-            {{elo.elo}}
+            <div class="itensSelect">
+              <div class="product-name">
+                <p>
+                  {{ elo.nome}} 
+                </p>
+              </div>
+              <img [src]="elo.img"/>
+            </div>
           </div>
           
           </dx-select-box>

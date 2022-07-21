@@ -13,44 +13,46 @@ import { RotaInterface } from "../interfaces/rota.interface";
 })
 export class LolService implements OnInit{
 
-    campeoes : CampeoesInterface[] = [{
-        img:'teste',nome:'kennen'
-    },
-    {
-        img:'teste2',nome:'yasuo'
-    },{
-        nome:'ahri',img:'teste3'
-    }]
+    // https://developer.riotgames.com/docs/portal -> API oficial de League of Legends
+ 
+    // Chave de API deve ser recriada dia a dia através do link:https://developer.riotgames.com/
+    // Chave atual: RGAPI-e56afd4c-eb4c-4668-8e4e-d185c6599a4e -> Sempre atualizar no config.js
 
     rotas : RotaInterface[] = [
         {
-            rota:'TOP',img:""
+            rota:'top',img:"/assets/rotas/top.png",nome:'TOP'
         },{
-            rota:'middle',img:""
+            rota:'middle',img:"/assets/rotas/mid.png",nome:'MID'
         },{
-            rota:"ADC",img:''
+            rota:"adc",img:'/assets/rotas/adc.png',nome:"ADC"
         },{
-            rota:"SUP",img:""
+            rota:"support",img:"/assets/rotas/sup.png",nome:'SUP'
         },{
-            rota:"JUNGLER",img:''
+            rota:"jungle",img:'/assets/rotas/jungler.png',nome:"JUNGLER"
         }
     ]
 
     elos : EloInterface[] = [
         {
-            elo:'Ferro',img:''
+            elo:'iron',img:'/assets/emblemas/ferro.png',nome:'Ferro'
         },{
-            elo:"Bronze",img:''
+            elo:"bronze",img:'/assets/emblemas/bronze.png',nome:'Bronze'
         },{
-            elo:'Prata',img:''
+            elo:'silver',img:'/assets/emblemas/prata.png',nome:'Prata'
         },{
-            elo:'gold',img:''
+            elo:'gold',img:'/assets/emblemas/ouro.png',nome:'Ouro'
+        },{
+           elo:'platina',img:'/assets/emblemas/platina.png',nome:'Platina' 
+        },{
+            elo:"diamond",img:'/assets/emblemas/diamante.png',nome:'Diamante'
+        },{
+            elo:'master',img:'/assets/emblemas/mestre.png',nome:'Mestre'
         }
     ]
 
     matchup:MatchupInterface = {
         campeoes: [],
-        oponente: '',
+        oponente: {nome:'',img:''},
         rota: '',
         elo:''
     }
@@ -69,12 +71,24 @@ export class LolService implements OnInit{
         this.matchup = matchup;
     }
 
-    getCampeoes():Array<CampeoesInterface>{
-        return this.campeoes;
+    getCampeoesBackEnd():Observable<CampeoesInterface[]>{
+        return this.http.get<CampeoesInterface[]>('http://localhost:3080/campeoes');
     }
 
     getRotas():Array<RotaInterface>{
         return this.rotas;
+    }
+
+    getRotaImg(rota:string):string{
+        let rotaObj = this.rotas.find(value => value.rota == rota);
+        let img = <string>rotaObj?.img;
+        return img
+    }
+
+    getEloImg(elo:string):string{
+        let eloObj = this.elos.find(value => value.elo == elo);
+        let img = <string>eloObj?.img;
+        return img
     }
 
     getElos():Array<EloInterface>{

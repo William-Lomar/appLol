@@ -1,6 +1,8 @@
+import { CampeoesInterface } from "./campeoes.interface";
+
 export interface MatchupInterface{
-    campeoes:Array<string>;
-    oponente:string;
+    campeoes:Array<CampeoesInterface>;
+    oponente:CampeoesInterface;
     rota:string;
     elo:string;
 }
