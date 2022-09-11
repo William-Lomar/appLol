@@ -1,4 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DxBoxModule, DxButtonModule, DxFormModule, DxListModule, DxMenuModule, DxSelectBoxModule, DxTagBoxModule, DxTemplateModule, DxTextAreaModule, DxTextBoxModule } from 'devextreme-angular';
@@ -43,7 +44,11 @@ import { HeaderComponent } from './shared/header/header.component';
     DxBoxModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,6 @@
 export const environment = {
-  production: false
+  production: false,
+
+  login: 'Sua senha da API'
+
 };

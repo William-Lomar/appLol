@@ -1,3 +1,4 @@
+import { TestesService } from './testes.service';
 import { Component } from "@angular/core";
 
 
@@ -5,6 +6,10 @@ import { Component } from "@angular/core";
     templateUrl:'./testes.component.html'
 })
 export class TestesComponent{
+  constructor(
+    private service:TestesService
+  ){}
+
     matchup = {
         campeoes: '',
         oponente: '',
@@ -82,6 +87,17 @@ export class TestesComponent{
     encontrarMatchup(e:any){
         console.log(this.matchup.oponente);
         e.preventDefault();//Impede a pagina de recarregar
+
+        this.service.get().subscribe({
+          next:(r)=>{
+            console.log(r);
+          },error:(e)=>{
+            console.log(e);
+
+          }
+        })
+
+
     }
-    
+
 }
