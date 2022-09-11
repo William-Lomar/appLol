@@ -8,7 +8,6 @@ import { MenuService } from "src/app/services/menu.service";
     templateUrl:'./header.component.html'
 })
 export class HeaderComponent{
-
     constructor(
         private menuService:MenuService
     ){}
@@ -21,8 +20,6 @@ export class HeaderComponent{
         }else{
             rota = event.itemData.text;
         }
-
-        console.log('Clicou em: '+rota);
 
         this.menuService.rotasMenu(rota);
     }

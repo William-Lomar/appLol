@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { MatchupInterface } from "src/app/interfaces/matchup.interface";
 import { ResultMatchupInterface } from "src/app/interfaces/resultMatchup.interface";
 import { LolService } from "src/app/services/lol.service";
 
@@ -10,7 +9,7 @@ import { LolService } from "src/app/services/lol.service";
 export class ResultsComponent implements OnInit{
     resultados!:Array<ResultMatchupInterface>;
     loading:boolean = true;
-    
+
     constructor(
         private lolService:LolService
     ){}
@@ -24,8 +23,6 @@ export class ResultsComponent implements OnInit{
             },error:(erro)=>{
                 console.log(erro);
             }
-        })      
-       console.log(this.resultados);
+        })
     }
-
 }

@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
@@ -7,14 +8,13 @@ import { MatchupInterface } from "../interfaces/matchup.interface";
 import { ResultMatchupInterface } from "../interfaces/resultMatchup.interface";
 import { RotaInterface } from "../interfaces/rota.interface";
 
-
 @Injectable({
     providedIn:'root'
 })
 export class LolService implements OnInit{
 
     // https://developer.riotgames.com/docs/portal -> API oficial de League of Legends
- 
+
     // Chave de API deve ser recriada dia a dia através do link:https://developer.riotgames.com/
     // Chave atual: RGAPI-e56afd4c-eb4c-4668-8e4e-d185c6599a4e -> Sempre atualizar no config.js
 
@@ -42,7 +42,7 @@ export class LolService implements OnInit{
         },{
             elo:'gold',img:'/assets/emblemas/ouro.png',nome:'Ouro'
         },{
-           elo:'platina',img:'/assets/emblemas/platina.png',nome:'Platina' 
+           elo:'platina',img:'/assets/emblemas/platina.png',nome:'Platina'
         },{
             elo:"diamond",img:'/assets/emblemas/diamante.png',nome:'Diamante'
         },{
@@ -58,13 +58,13 @@ export class LolService implements OnInit{
     }
 
     resultsMatchups !: ResultMatchupInterface[];
- 
+
     constructor(
         private http:HttpClient
     ){}
 
     ngOnInit(): void {
-        
+
     }
 
     atualizarMatchup(matchup:MatchupInterface){
@@ -72,7 +72,7 @@ export class LolService implements OnInit{
     }
 
     getCampeoesBackEnd():Observable<CampeoesInterface[]>{
-        return this.http.get<CampeoesInterface[]>('http://localhost:3080/campeoes');
+        return this.http.get<CampeoesInterface[]>(environment.apiPrivate+'campeoes');
     }
 
     getRotas():Array<RotaInterface>{
@@ -96,6 +96,6 @@ export class LolService implements OnInit{
     }
 
     realizarMatchups():Observable<ResultMatchupInterface[]>{
-        return this.http.post<ResultMatchupInterface[]>('http://localhost:3080/matchup',this.matchup);
+        return this.http.post<ResultMatchupInterface[]>(environment.apiPrivate+'matchup',this.matchup);
     }
 }

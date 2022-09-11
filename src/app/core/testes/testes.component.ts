@@ -71,10 +71,6 @@ export class TestesComponent{
         useSubmitBehavior: true,
       };
 
-    campeoesEscolhidos = [];
-
-    opcoesCampeoes = ['irelia','veigar','mundo'];
-
     rotas = ['TOP','MID','ADC','SUP','JUNGLER'];
 
     elos = ['Ferro','Bronze','Prata','Ouro'];
@@ -85,9 +81,7 @@ export class TestesComponent{
     }
 
     encontrarMatchup(e:any){
-        console.log(this.matchup.oponente);
         e.preventDefault();//Impede a pagina de recarregar
-
         this.service.get().subscribe({
           next:(r)=>{
             console.log(r);
